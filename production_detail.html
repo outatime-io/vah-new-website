@@ -447,7 +447,7 @@
             <div class="flex items-center gap-2">
               <button id="calPrev" class="inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/20 bg-transparent hover:bg-white/10" aria-label="Vorheriger Monat">‹</button>
               <button id="calToday" class="inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/20 bg-transparent hover:bg-white/10" aria-label="Zu diesem Monat">Heute</button>
-              <button id="calJumpNext" class="inline-flex items-center justify-center rounded-xl px-3 py-2 border border-amber-400 bg-amber-400 text-black hover:bg-amber-300" aria-label="Zum nächsten Termin">Zum nächsten Termin</button>
+              <button id="calJumpNext" class="inline-flex items-center justify-center rounded-xl px-3 py-2 border border-amber-400 bg-amber-400 text-black hover:bg-amber-300" aria-label="Zum ersten Termin">Zum ersten Termin</button>
               <button id="calNext" class="inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/20 bg-transparent hover:bg-white/10" aria-label="Nächster Monat">›</button>
             </div>
           </div>
@@ -481,10 +481,8 @@
 
             // view: first show
             const tNow = new Date();
-            const todayKey = `${tNow.getFullYear()}-${String(tNow.getMonth()+1).padStart(2,'0')}-${String(tNow.getDate()).padStart(2,'0')}`;
             const sorted = [...events].sort((a,b)=> a.date.localeCompare(b.date));
             const firstShow = sorted[0] || null;
-            const nextUp = (events.filter(e=> e.date >= todayKey).sort((a,b)=> a.date.localeCompare(b.date))[0]) || null;
             let view = firstShow ? { y:firstShow.y, m:firstShow.m } : { y:tNow.getFullYear(), m:tNow.getMonth() };
 
             // utils
@@ -494,17 +492,16 @@
             function clear(n){ while(n.firstChild) n.removeChild(n.firstChild); }
 
             // jump label helpers (FIX: previously missing)
-            function isViewingFirst(){ return !!firstShow && view.y === firstShow.y && view.m === firstShow.m; }
             function updateJumpLabel(){
               if(!btnJump) return;
-              if(!nextUp){
+              if(!firstShow){
                 btnJump.disabled = true;
                 btnJump.textContent = 'Keine kommenden Termine';
                 btnJump.setAttribute('aria-label','Keine kommenden Termine');
                 return;
               }
               btnJump.disabled = false;
-              const labelTxt = isViewingFirst() ? 'Zum nächsten Termin' : 'Zum ersten Termin';
+              const labelTxt = 'Zum ersten Termin';
               btnJump.textContent = labelTxt;
               btnJump.setAttribute('aria-label', labelTxt);
             }
@@ -565,14 +562,9 @@
             btnNext?.addEventListener('click', ()=>{ view.m++; if(view.m>11){view.m=0; view.y++; } render(); });
             btnToday?.addEventListener('click', ()=>{ const t=new Date(); view.y=t.getFullYear(); view.m=t.getMonth(); render(); });
             if(btnJump){
-              if(!nextUp) btnJump.disabled = true;
               btnJump.addEventListener('click', ()=>{
-                if(!nextUp) return;
-                if(isViewingFirst()){
-                  view.y = nextUp.y; view.m = nextUp.m;
-                } else if(firstShow){
-                  view.y = firstShow.y; view.m = firstShow.m;
-                }
+                if(!firstShow) return;
+                view.y = firstShow.y; view.m = firstShow.m;
                 render();
               });
             }
@@ -684,12 +676,14 @@
         tests.push({name:'Calendar grid renders', pass: (document.getElementById('calGrid') && document.getElementById('calGrid').children.length >= 28)});
         const jump = document.getElementById('calJumpNext');
         if (jump) {
-          const before = document.getElementById('calLabel')?.textContent || '';
+          const initialLabel = document.getElementById('calLabel')?.textContent || '';
+          document.getElementById('calNext')?.click();
+          const movedLabel = document.getElementById('calLabel')?.textContent || '';
           const textBefore = jump.textContent.trim();
           jump.click();
-          const after = document.getElementById('calLabel')?.textContent || '';
+          const afterJump = document.getElementById('calLabel')?.textContent || '';
           const textAfter = jump.textContent.trim();
-          tests.push({name:'Jump button updates month', pass: before !== after});
+          tests.push({name:'Jump button returns to first event month', pass: movedLabel !== afterJump && afterJump === initialLabel});
           tests.push({name:'Jump label not empty', pass: textBefore.length>0 && textAfter.length>0});
         }
         console.table(tests);
