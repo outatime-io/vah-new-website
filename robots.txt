@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# This file blocks all crawling and indexing for the site.
