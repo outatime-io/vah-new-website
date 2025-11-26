@@ -146,7 +146,8 @@
         year: 2025,
         poster: 'https://vorhang-auf-holzwickede.de/storage/production_poster/1JohnJen_Lippa_Greenwald_Story.jpg',
         premiere: '08. Februar 2025',
-        location: 'Forum Holzwickede'
+        location: 'Forum Holzwickede',
+        detail_url: 'production_detail.html'
       },
       {
         title: 'Der kleine Tag',
@@ -154,7 +155,8 @@
         year: 2025,
         poster: 'https://vorhang-auf-holzwickede.de/storage/production_poster/DER%20KLEINE%20TAG.png',
         premiere: '29. März 2025',
-        location: 'Forum Holzwickede'
+        location: 'Forum Holzwickede',
+        detail_url: 'production_detail_kleiner_tag.html'
       },
       {
         title: 'Musicalgala 2024',
@@ -186,7 +188,8 @@
       const poster = item?.poster_url || item?.poster || item?.image_url || item?.image || item?.cover || '';
       const location = item?.location || item?.city || item?.venue;
       const premiere = item?.premiere_date || item?.premiere || item?.date;
-      return { title, description, year, poster, location, premiere };
+      const detail_url = item?.detail_url || item?.details_url || '';
+      return { title, description, year, poster, location, premiere, detail_url };
     };
 
     const buildCard = (production) => {
@@ -211,6 +214,11 @@
       } else {
         locationEl.remove();
       }
+
+      const actions = clone.querySelector('[data-actions]');
+      const detailsLink = actions.querySelector('a');
+      detailsLink.href = production.detail_url || 'production_detail.html';
+      if (!production.premiere) detailsLink.textContent = 'Ansehen';
       return clone;
     };
 
