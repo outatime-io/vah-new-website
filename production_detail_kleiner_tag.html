@@ -160,6 +160,17 @@
         { "name": "Paul Richter", "role": "Der erste Tag", "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80" },
         { "name": "Mia Sommer", "role": "Der rote Tag", "image": "https://images.unsplash.com/photo-1502720705749-3c9255857623?auto=format&fit=crop&w=400&q=80" },
         { "name": "Luca Klein", "role": "Der braune Tag", "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" }
+      ],
+      "noteEntries": [
+        {
+          "label": "In weiteren Rollen",
+          "peopleList": [
+            { "name": "Karo Osmani", "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
+            { "name": "Jill Marie Annas", "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80" },
+            { "name": "Elmedina Beganovic", "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" },
+            { "name": "Lisa Kraus", "image": "https://images.unsplash.com/photo-1502720705749-3c9255857623?auto=format&fit=crop&w=400&q=80" }
+          ]
+        }
       ]
     },
     {
@@ -170,6 +181,16 @@
         { "name": "David Diener", "role": "Gitarre", "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" },
         { "name": "Kim Friehs", "role": "Keyboard", "image": "https://images.unsplash.com/photo-1502720705749-3c9255857623?auto=format&fit=crop&w=400&q=80" },
         { "name": "Tim Alexewicz", "role": "Bass", "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" }
+      ],
+      "noteEntries": [
+        {
+          "label": "In Zusammenarbeit mit",
+          "peopleList": [
+            { "name": "Hannah Rotgeri", "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" },
+            { "name": "Julian Surmann", "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
+            { "name": "Julia Liedtke", "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" }
+          ]
+        }
       ]
     },
     {
@@ -201,46 +222,60 @@
 
     <script>
       (function(){
-        const container = document.getElementById('tabPanels');
-        const tabList = document.getElementById('tabControls');
-        const raw = document.getElementById('cast-tabs-json')?.textContent || '{}';
-        const data = JSON.parse(raw);
-        const groups = Array.isArray(data.groups) ? data.groups : [];
-        const tabs = new Map();
-        const panels = new Map();
-        let active = groups[0]?.id || null;
+    const container = document.getElementById('tabPanels');
+    const tabList = document.getElementById('tabControls');
+    const jsonScript = document.getElementById('cast-tabs-json');
+    const raw = jsonScript && jsonScript.textContent ? jsonScript.textContent : '{}';
+    const data = JSON.parse(raw);
+    const groups = Array.isArray(data.groups) ? data.groups.map(normalizeGroup) : [];
+    const tabs = new Map();
+    const panels = new Map();
+    let active = groups[0] ? groups[0].id : null;
         const placeholderSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Kein Foto"><defs><linearGradient id="grad" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fbbf24" offset="0%"/><stop stop-color="#171717" offset="100%"/></linearGradient></defs><rect width="160" height="160" rx="24" fill="url(#grad)"/><circle cx="80" cy="64" r="32" fill="rgba(255,255,255,0.85)"/><path d="M32 140c6-30 30-44 48-44s42 14 48 44" fill="rgba(255,255,255,0.85)"/></svg>';
-        const PLACEHOLDER = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(placeholderSvg);
+    const PLACEHOLDER = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(placeholderSvg);
 
-        function createCard(member){
-          const card = document.createElement('article');
-          card.className = 'bg-white/5 border border-white/5 rounded-2xl p-4 flex gap-3 items-center shadow-sm backdrop-blur';
+    function normalizeGroup(group){
+      const noteEntries = Array.isArray(group.noteEntries) ? group.noteEntries : [];
+      if (group.note && !noteEntries.length){
+        noteEntries.push({ text: group.note });
+      }
+      return { ...group, noteEntries };
+    }
 
-          const img = document.createElement('img');
-          img.className = 'w-16 h-16 rounded-xl object-cover flex-shrink-0';
-          const hasImage = typeof member.image === 'string' && member.image.trim().length > 0;
-          img.src = hasImage ? member.image : PLACEHOLDER;
-          img.onerror = () => { img.onerror = null; img.src = PLACEHOLDER; };
-          img.alt = member.name ? `Portrait von ${member.name}` : 'Portrait Platzhalter';
-          img.loading = 'lazy';
-          img.width = 80; img.height = 80;
+    function ensureSuffix(value, suffix){
+      const str = String(value || '');
+      return str.endsWith(suffix) ? str : `${str}${suffix}`;
+    }
 
-          const body = document.createElement('div');
-          const name = document.createElement('h3');
-          name.className = 'font-semibold text-base';
-          name.textContent = member.name || 'tba';
+    function createCard(member){
+      const card = document.createElement('article');
+      card.className = 'bg-white/5 border border-white/5 rounded-2xl p-4 flex gap-3 items-center shadow-sm backdrop-blur';
 
-          const role = document.createElement('p');
-          role.className = 'text-sm text-white/70';
-          role.textContent = member.role || '';
+      const img = document.createElement('img');
+      img.className = 'w-16 h-16 rounded-xl object-cover flex-shrink-0';
+      const hasImage = typeof member.image === 'string' && member.image.trim().length > 0;
+      img.src = hasImage ? member.image : PLACEHOLDER;
+      img.onerror = () => { img.onerror = null; img.src = PLACEHOLDER; };
+      img.alt = member.name ? `Portrait von ${member.name}` : 'Portrait Platzhalter';
+      img.loading = 'lazy';
+      img.width = 80; img.height = 80;
 
-          body.appendChild(name);
-          if (member.role) body.appendChild(role);
+      const body = document.createElement('div');
+      const name = document.createElement('h3');
+      name.className = 'font-semibold text-base';
+      name.textContent = member.name || 'tba';
 
-          card.appendChild(img);
-          card.appendChild(body);
-          return card;
-        }
+      const role = document.createElement('p');
+      role.className = 'text-sm text-white/70';
+      role.textContent = member.role || '';
+
+      body.appendChild(name);
+      if (member.role) body.appendChild(role);
+
+      card.appendChild(img);
+      card.appendChild(body);
+      return card;
+    }
 
         function buildTabs(){
           tabList.innerHTML = '';
@@ -286,6 +321,37 @@
 
             if (Array.isArray(group.members)) {
               group.members.forEach(member => panel.appendChild(createCard(member)));
+            }
+
+            const notes = Array.isArray(group.noteEntries) ? group.noteEntries : [];
+            if (notes.length){
+              const noteWrap = document.createElement('div');
+              noteWrap.className = 'sm:col-span-2 lg:col-span-3 space-y-2 pt-2';
+              notes.forEach(note => {
+                const peopleList = Array.isArray(note.peopleList) ? note.peopleList : [];
+                const hasPeopleGrid = peopleList.length > 0;
+                const hasText = (note.people && String(note.people).trim()) || (note.text && String(note.text).trim());
+
+                if (note.label){
+                  const label = document.createElement('p');
+                  label.className = 'text-sm font-semibold text-white/80';
+                  label.textContent = ensureSuffix(note.label, ':');
+                  noteWrap.appendChild(label);
+                }
+
+                if (hasPeopleGrid){
+                  const grid = document.createElement('div');
+                  grid.className = 'grid sm:grid-cols-2 lg:grid-cols-3 gap-4';
+                  peopleList.forEach(person => grid.appendChild(createCard({ ...person, role: '' })));
+                  noteWrap.appendChild(grid);
+                } else if (hasText){
+                  const people = document.createElement('p');
+                  people.className = 'text-sm text-white/70';
+                  people.textContent = note.people || note.text || '';
+                  noteWrap.appendChild(people);
+                }
+              });
+              panel.appendChild(noteWrap);
             }
 
             container.appendChild(panel);

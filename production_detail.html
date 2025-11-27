@@ -171,8 +171,8 @@
             <li><span class="text-white/60">Buch &amp; Liedtexte:</span> Tom Greenwald</li>
             <li><span class="text-white/60">Musik:</span> Andrew Lippa</li>
             <li><span class="text-white/60">Deutsche Fassung:</span> –</li>
-            <li><span class="text-white/60">Regie:</span> N. N.</li>
-            <li><span class="text-white/60">Musikalische Leitung:</span> N. N.</li>
+            <li><span class="text-white/60">Regie:</span> Anja Gimbel</li>
+            <li><span class="text-white/60">Musikalische Leitung:</span> Kim Friehs</li>
           </ul>
         </aside>
       </div>
@@ -224,12 +224,6 @@
       { "label": "Bass", "people": "Tim Alexewicz" },
       { "label": "Schlagzeug", "people": "Felix Kleff" }
     ]},
-    { "section": "Regie & Choreographie", "items": [
-      { "people": "Anja Gimbel" }
-    ]},
-    { "section": "Musikalische Leitung", "items": [
-      { "people": "Kim Friehs" }
-    ]},
     { "section": "Technik", "items": [
       { "label": "Ton", "people": "Lars Funke" },
       { "label": "Licht", "people": "Stefan (Aze) Gimbel" },
@@ -256,78 +250,234 @@
   ]
 }</script>
 
-        <div id="cast-crew-root" class="mt-6"></div>
+        <div id="castTabControls" class="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Cast Tabs"></div>
+        <div id="castTabPanels" class="mt-6"></div>
       </div>
     </section>
 
     <script>
       // Data-driven renderer for Cast & Crew
       (function(){
-        function el(tag, className, text){
-          const n = document.createElement(tag);
-          if (className) n.className = className;
-          if (text) n.textContent = text;
-          return n;
-        }
-        function renderCast(root, cast, note){
-          if(!Array.isArray(cast) || cast.length === 0) return;
-          const wrap = el('div');
-          wrap.appendChild(el('h3', 'text-xl font-semibold', 'Besetzung'));
-          const ul = el('ul', 'mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-y-1 gap-x-6 text-sm');
-          cast.forEach(({role, name}) => {
-            const li = el('li', 'flex');
-            const roleEl = el('span', 'text-white/60', role || '–');
-            const sep = el('span', 'mx-1', ':');
-            const nameEl = el('span', 'text-white/90 font-medium', name || 'tba');
-            li.appendChild(roleEl); li.appendChild(sep); li.appendChild(nameEl);
-            ul.appendChild(li);
-          });
-          wrap.appendChild(ul);
-          if (note) {
-            const p = el('p', 'mt-3 text-xs text-white/70');
-            const label = el('span', 'text-white/60', 'In weiteren Rollen: ');
-            p.appendChild(label);
-            p.appendChild(document.createTextNode(note));
-            wrap.appendChild(p);
-          }
-          root.appendChild(wrap);
-        }
-        function renderCrew(root, crew){
-          if(!Array.isArray(crew) || crew.length === 0) return;
-          const wrap = el('div', 'mt-8');
-          crew.forEach(section => {
-            const sec = el('section', 'mt-6 first:mt-0');
-            sec.appendChild(el('h3', 'font-semibold text-base', section.section || 'Team'));
-            if (Array.isArray(section.items) && section.items.length){
-              const ul = el('ul', 'mt-2 grid sm:grid-cols-2 gap-y-1 gap-x-6 text-sm text-white/90');
-              section.items.forEach(it => {
-                const li = el('li');
-                if (it.label){
-                  const span = el('span', 'text-white/60', it.label + ': ');
-                  li.appendChild(span);
-                }
-                li.appendChild(document.createTextNode(it.people || 'tba'));
-                ul.appendChild(li);
-              });
-              sec.appendChild(ul);
-            } else if (section.people){
-              sec.appendChild(el('p', 'mt-2 text-sm text-white/90', section.people));
-            }
-            wrap.appendChild(sec);
-          });
-          root.appendChild(wrap);
-        }
         try{
-          const container = document.getElementById('cast-crew-root');
-          const raw = document.getElementById('cast-crew-json')?.textContent || '{}';
+          const tabList = document.getElementById('castTabControls');
+          const panelsRoot = document.getElementById('castTabPanels');
+          const jsonScript = document.getElementById('cast-crew-json');
+          const raw = jsonScript && jsonScript.textContent ? jsonScript.textContent : '{}';
           const data = JSON.parse(raw);
-          renderCast(container, data.cast, data.cast_note);
-          renderCrew(container, data.crew);
+          const groups = Array.isArray(data.groups) && data.groups.length
+            ? data.groups
+            : buildGroupsFromLegacyData(data);
+          const tabs = groups.map(group => ({
+            id: group.id,
+            label: group.label || 'Gruppe',
+            render: () => buildGroupPanel(group)
+          }));
+          const tabMap = new Map();
+          const panelMap = new Map();
+          let active = tabs[0] ? tabs[0].id : null;
+
+          function el(tag, className, text){
+            const n = document.createElement(tag);
+            if (className) n.className = className;
+            if (text) n.textContent = text;
+            return n;
+          }
+
+          function slugify(value){
+            return String(value || '')
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g,'-')
+              .replace(/(^-|-$)/g,'') || 'gruppe';
+          }
+
+          function buildGroupsFromLegacyData({ cast, cast_note, crew }){
+            const result = [];
+
+            const parsedCastNote = parseNote(cast_note);
+
+            if (Array.isArray(cast) && cast.length){
+              result.push({
+                id: 'besetzung',
+                label: 'Besetzung',
+                members: cast.map(entry => ({
+                  role: entry.role,
+                  name: entry.name
+                })),
+                noteEntries: parsedCastNote ? [parsedCastNote] : []
+              });
+            }
+
+            if (Array.isArray(crew)){
+              crew.forEach((section, index) => {
+                const id = section.section ? slugify(section.section) : `crew-${index+1}`;
+                const members = [];
+                const noteEntries = [];
+
+                if (Array.isArray(section.items)){
+                  section.items.forEach(item => {
+                    const candidate = { label: item.label, people: item.people };
+                    if (isNoteLabel(item.label)){
+                      const parsed = parseNote(`${item.label || ''}: ${item.people || ''}`.trim());
+                      if(parsed) noteEntries.push(parsed);
+                    } else {
+                      members.push(candidate);
+                    }
+                  });
+                } else if (section.people){
+                  members.push({ people: section.people });
+                }
+
+                result.push({
+                  id,
+                  label: section.section || 'Team',
+                  members,
+                  noteEntries
+                });
+              });
+            }
+
+            return result;
+          }
+
+          function isNoteLabel(label){
+            const value = String(label || '').trim().toLowerCase();
+            return value.startsWith('in ');
+          }
+
+          function parseNote(note){
+            if(!note) return null;
+            const text = String(note).trim();
+            if(!text) return null;
+            const match = text.match(/^([^:]+:?)\s*(.*)$/);
+            if(!match) return { label: '', text };
+            const label = match[1].endsWith(':') ? match[1] : `${match[1]}:`;
+            const rest = match[2] || '';
+            return { label, text: rest };
+          }
+
+          function buildGroupPanel(group){
+            const wrap = el('div', 'grid gap-y-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-6 text-sm text-white/90');
+            const members = Array.isArray(group.members) ? group.members : [];
+            const notes = Array.isArray(group.noteEntries) ? group.noteEntries : [];
+
+            if(members.length === 0 && notes.length === 0){
+              wrap.appendChild(el('p', 'text-white/70', `${group.label || 'Gruppe'} wird noch bekanntgegeben.`));
+              return wrap;
+            }
+
+            members.forEach(member => {
+              const line = el('p');
+
+              if (member.role && member.name){
+                const roleText = `${member.role}:`;
+                line.appendChild(el('span', 'text-white/60', roleText + ' '));
+                line.appendChild(document.createTextNode(member.name || 'tba'));
+              } else if (member.label && member.people){
+                line.appendChild(el('span', 'text-white/60', ensureSuffix(member.label, ':') + ' '));
+                line.appendChild(document.createTextNode(member.people));
+              } else if (member.people){
+                line.appendChild(document.createTextNode(member.people));
+              } else if (member.name){
+                line.appendChild(document.createTextNode(member.name));
+              }
+
+              wrap.appendChild(line);
+            });
+
+            notes.forEach(note => {
+              const line = el('p', 'sm:col-span-2 xl:col-span-3 pt-2 text-xs text-white/70');
+              if(note.label){
+                line.appendChild(el('span', 'text-white/60', ensureSuffix(note.label, ':') + ' '));
+              }
+              if(note.text){
+                line.appendChild(document.createTextNode(note.text));
+              }
+              wrap.appendChild(line);
+            });
+
+            return wrap;
+          }
+
+          function ensureSuffix(value, suffix){
+            const str = String(value || '');
+            return str.endsWith(suffix) ? str : `${str}${suffix}`;
+          }
+
+          function buildTabs(){
+            tabList.innerHTML = '';
+            tabs.forEach(tab => {
+              const isActive = tab.id === active;
+              const btn = document.createElement('button');
+              btn.type = 'button';
+              btn.id = `tab-${tab.id}`;
+              btn.dataset.tabId = tab.id;
+              btn.setAttribute('role','tab');
+              btn.setAttribute('aria-controls', `panel-${tab.id}`);
+              btn.textContent = tab.label;
+              btn.setAttribute('tabindex', isActive ? '0' : '-1');
+              btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+              btn.className = 'px-4 py-2 rounded-xl border text-sm font-semibold transition ' + (isActive ? 'bg-amber-400 text-black border-amber-400' : 'bg-white/5 text-white border-white/10 hover:bg-white/10');
+              tabList.appendChild(btn);
+              tabMap.set(tab.id, btn);
+            });
+
+            tabList.addEventListener('click', event => {
+              const target = event.target;
+              if (!(target instanceof HTMLElement)) return;
+              const tabId = target.dataset.tabId;
+              if (!tabId || !tabMap.has(tabId)) return;
+              setActive(tabId);
+            });
+          }
+
+          function buildPanels(){
+            panelsRoot.innerHTML = '';
+            tabs.forEach(tab => {
+              const panel = document.createElement('div');
+              panel.id = `panel-${tab.id}`;
+              panel.dataset.panelId = tab.id;
+              panel.setAttribute('role','tabpanel');
+              panel.setAttribute('aria-labelledby', `tab-${tab.id}`);
+
+              const content = tab.render();
+              panel.appendChild(content);
+
+              const shouldHide = tab.id !== active;
+              panel.hidden = shouldHide;
+              panel.setAttribute('aria-hidden', shouldHide ? 'true' : 'false');
+              panel.classList.toggle('hidden', shouldHide);
+
+              panelsRoot.appendChild(panel);
+              panelMap.set(tab.id, panel);
+            });
+          }
+
+          function setActive(id){
+            if (!tabMap.has(id) || !panelMap.has(id)) return;
+            active = id;
+            tabMap.forEach((btn, tabId) => {
+              const selected = tabId === id;
+              btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+              btn.setAttribute('tabindex', selected ? '0' : '-1');
+              btn.className = 'px-4 py-2 rounded-xl border text-sm font-semibold transition ' + (selected ? 'bg-amber-400 text-black border-amber-400' : 'bg-white/5 text-white border-white/10 hover:bg-white/10');
+            });
+
+            panelMap.forEach((panel, panelId) => {
+              const isActive = panelId === id;
+              panel.hidden = !isActive;
+              panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+              panel.classList.toggle('hidden', !isActive);
+            });
+          }
+
+          buildTabs();
+          buildPanels();
+          if (active) setActive(active);
         }catch(e){
-          const container = document.getElementById('cast-crew-root');
+          const container = document.getElementById('castTabPanels');
           const pre = el('pre', 'mt-4 text-sm bg-white/5 rounded-2xl p-4');
           pre.textContent = 'Fehler beim Laden der Mitwirkenden: ' + (e && e.message ? e.message : e);
-          container?.appendChild(pre);
+          if (container) container.appendChild(pre);
         }
       })();
     </script>
