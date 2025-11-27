@@ -53,7 +53,21 @@ Für den echten Einsatz sollten:
 
 ## Dateien
 
-Alle HTML-Dateien aus dem Hauptverzeichnis wurden in diesen Ordner kopiert, aber nur `index.html` wurde mit Sponsor-Bannern ergänzt.
+Alle HTML-Dateien aus dem Hauptverzeichnis wurden in diesen Ordner kopiert. Sponsor-Banner wurden hinzugefügt zu:
+
+- **index.html** - Alle 4 Banner-Optionen demonstriert
+- **production_detail.html** (John & Jen) - Produktions-spezifische Banner mit Sparkasse Unna als Hauptsponsor
+- **production_detail_kleiner_tag.html** (Der kleine Tag) - Produktions-spezifische Banner mit Kulturförderung NRW als Hauptförderer
+
+### Produktionsseiten-Banner:
+
+Auf den Produktionsdetailseiten wurden 2 zusätzliche Integrationen demonstriert:
+
+1. **Banner direkt unter Navigation**: Zeigt den Hauptsponsor der jeweiligen Produktion
+   - John & Jen: Sparkasse Unna (rotes Banner)
+   - Der kleine Tag: Kulturförderung NRW (grünes Banner)
+
+2. **Sponsor-Sektion vor dem CTA**: Zeigt alle unterstützenden Partner der Produktion mit verschiedenen Größen (Haupt- und Nebensponsor)
 
 ## Demo ansehen
 
