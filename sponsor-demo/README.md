@@ -33,8 +33,13 @@ Diese Version enthält **4 verschiedene Sponsor-Banner-Optionen**:
 ## Verwendete Technologien
 
 - Alle Banner verwenden **Tailwind CSS** (bereits im Projekt vorhanden)
-- **SVG-Icons** als Platzhalter für echte Logos
+- **Custom SVG-Logos** mit professionellem Design:
+  - Sparkasse Unna: Rotes "S" Logo im Sparkassen-Stil
+  - Stadt Holzwickede: Wappen mit Schild in Blau/Gold
+  - Kulturförderung NRW: Grünes Logo mit kulturellen Elementen
+  - Partner-Logos: Individuelle Business-Designs
 - **Responsive Design** für Mobile und Desktop
+- **Hover-Effekte** und Animationen für bessere Interaktivität
 
 ## Anpassungen für Produktiveinsatz
 
