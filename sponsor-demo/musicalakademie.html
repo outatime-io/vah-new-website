@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Musicalakademie – Kindermusical | Vorhang auf, Holzwickede! e.V.</title>
+  <meta name="description" content="Alles zur Musicalakademie des Vereins – unser Kindermusical-Programm mit Gesang, Tanz und Schauspiel für junge Talente." />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Musicalakademie – Vorhang auf, Holzwickede! e.V." />
+  <meta property="og:description" content="Entdecke unser Kindermusical-Programm: Proben, Workshops und Auftritte für junge Musicalfans." />
+  <meta property="og:url" content="https://vorhang-auf-holzwickede.de/page/musicalakademie" />
+  <meta property="og:image" content="https://vorhang-auf-holzwickede.de/assets/favicon.png" />
+
+  <link rel="icon" href="https://vorhang-auf-holzwickede.de/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://vorhang-auf-holzwickede.de" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --ring: 3px solid rgba(250,204,21,.55) }
+    :focus-visible { outline: var(--ring); outline-offset: 2px }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important }
+    }
+  </style>
+</head>
+<body class="antialiased text-white bg-neutral-950 min-h-screen flex flex-col">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed top-3 left-3 z-50 bg-amber-400 text-black rounded px-3 py-2">Zum Inhalt springen</a>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50">
+    <div class="bg-white/10 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Startseite">
+          <img src="https://vorhang-auf-holzwickede.de/assets/favicon.png" alt="Vorhang auf, Holzwickede! e.V. Logo" class="h-8 md:h-10 w-auto" width="40" height="40" />
+          <span class="sr-only">Vorhang auf, Holzwickede! e.V.</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8" aria-label="Hauptnavigation">
+          <a class="hover:underline" href="about.html">Über Uns</a>
+          <a class="hover:underline" href="musicalakademie.html" aria-current="page">Musicalakademie</a>
+          <a class="hover:underline" href="production_overview.html">Produktionen</a>
+          <a class="hover:underline" href="support.html">Unterstützen</a>
+          <a class="hover:underline" href="https://vorhang-auf-holzwickede.de/page/member">Mitglied werden</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" href="https://4c28c4b7.sibforms.com/serve/MUIEAMUiOUAlOynvVUQ7c_rTIwca2N6hSbYO2SqXM4_TrpKBUcBMlsee8MPWbYik94uDBdrV3gsiyP_opBUhD90revfDXbZzw4Z97aoR2g5PXntT4a_KKaxWc1m_iW_2IGJPYiKlW56clloRHHHalL01qPXVQ3yTcppBIpKjJYjhcN7G_kZPSqCyI81CFhwmTnq1BRqCUNrURaUq" rel="noopener">Newsletter</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" href="https://pretix.eu/Vorhang-auf-Holzwickede/" rel="noopener">Ticketshop</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-white text-black border-white hover:opacity-90" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">Menü</button>
+      </div>
+    </div>
+    <nav id="mobileMenu" hidden class="md:hidden bg-white/10 backdrop-blur" aria-label="Mobile Navigation">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 py-3 grid gap-2">
+        <a class="py-2" href="about.html">Über Uns</a>
+        <a class="py-2" href="musicalakademie.html" aria-current="page">Musicalakademie</a>
+        <a class="py-2" href="production_overview.html">Produktionen</a>
+        <a class="py-2" href="support.html">Unterstützen</a>
+        <a class="py-2" href="https://vorhang-auf-holzwickede.de/page/member">Mitglied werden</a>
+        <div class="flex gap-2 pt-2">
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10 flex-1" href="https://4c28c4b7.sibforms.com/serve/MUIEAMUiOUAlOynvVUQ7c_rTIwca2N6hSbYO2SqXM4_TrpKBUcBMlsee8MPWbYik94uDBdrV3gsiyP_opBUhD90revfDXbZzw4Z97aoR2g5PXntT4a_KKaxWc1m_iW_2IGJPYiKlW56clloRHHHalL01qPXVQ3yTcppBIpKjJYjhcN7G_kZPSqCyI81CFhwmTnq1BRqCUNrURaUq" rel="noopener">Newsletter</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300 flex-1" href="https://pretix.eu/Vorhang-auf-Holzwickede/" rel="noopener">Ticketshop</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="flex-1">
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden bg-gradient-to-b from-amber-500/10 via-neutral-950 to-black">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-amber-400/25 to-transparent"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.05),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(255,255,255,0.08),transparent_30%)]"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pt-10 pb-16 md:pb-24 grid gap-10 md:grid-cols-[1.2fr_1fr] items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.25em] text-amber-200/90">Kindermusical</p>
+          <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">Die Musicalakademie unseres Vereins</h1>
+          <p class="mt-4 text-lg text-white/85 leading-relaxed">In der Musicalakademie entdecken Kinder und Jugendliche Musicalhandwerk von Grund auf. Wir kombinieren Gesang, Tanz und Schauspiel zu einem ganzheitlichen Programm – getragen von erfahrenen Coaches und viel Teamgeist.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" href="https://pretix.eu/Vorhang-auf-Holzwickede/">Aktuelle Aufführungen</a>
+            <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" href="mailto:info@vorhang-auf-holzwickede.de?subject=Musicalakademie%20Anfrage">Kontakt aufnehmen</a>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2 text-xs text-white/75">
+            <span class="bg-white/10 backdrop-blur px-3 py-1 rounded-full">Workshops & Proben</span>
+            <span class="bg-white/10 backdrop-blur px-3 py-1 rounded-full">Auftritte bei Vereinsproduktionen</span>
+            <span class="bg-white/10 backdrop-blur px-3 py-1 rounded-full">Altersgerecht & wertschätzend</span>
+          </div>
+        </div>
+        <div class="bg-white/5 backdrop-blur rounded-3xl border border-white/10 shadow-2xl shadow-black/30 p-6 md:p-8 space-y-6">
+          <h2 class="text-xl font-semibold">Was die Musicalakademie ausmacht</h2>
+          <ul class="space-y-4 text-white/80">
+            <li class="flex gap-3">
+              <span class="mt-1 inline-flex h-2 w-2 rounded-full bg-amber-400"></span>
+              <span><strong>Ganzheitliches Lernen:</strong> Stimmbildung, Rhythmusgefühl, Schauspiel und Bewegung greifen ineinander.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 inline-flex h-2 w-2 rounded-full bg-amber-400"></span>
+              <span><strong>Auf der Bühne erlebbar:</strong> Probenphasen enden mit echten Aufführungen als Teil unseres <em>Kindermusicals</em>.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 inline-flex h-2 w-2 rounded-full bg-amber-400"></span>
+              <span><strong>Begleitete Entwicklung:</strong> Pädagogisch geschultes Team, klare Abläufe und ein sicherer Rahmen.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program pillars -->
+    <section class="py-16 md:py-20 bg-neutral-950">
+      <div class="max-w-7xl mx-auto px-6 md:px-8">
+        <div class="max-w-3xl text-center mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold">Bausteine unseres Kindermusicals</h2>
+          <p class="mt-4 text-white/80 leading-relaxed">Die Musicalakademie verbindet Kreativität mit Struktur. Jede Einheit stärkt Stimme, Körpergefühl und Spielfreude – und fördert Selbstvertrauen.</p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <article class="bg-white/5 border border-white/10 rounded-2xl p-6 h-full shadow-lg shadow-black/20">
+            <h3 class="text-lg font-semibold">Gesang</h3>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Atemtechnik, Intonation und Storytelling in der Musik. Wir arbeiten mit mehrstimmigen Arrangements und Soli.</p>
+          </article>
+          <article class="bg-white/5 border border-white/10 rounded-2xl p-6 h-full shadow-lg shadow-black/20">
+            <h3 class="text-lg font-semibold">Tanz & Bewegung</h3>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Warm-ups, Choreografie und Bühnenpräsenz. Bewegungsabläufe werden altersgerecht aufgebaut.</p>
+          </article>
+          <article class="bg-white/5 border border-white/10 rounded-2xl p-6 h-full shadow-lg shadow-black/20">
+            <h3 class="text-lg font-semibold">Schauspiel</h3>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Rollenarbeit, Textverständnis und Improvisation trainieren Ausdruck und Teamplay auf der Bühne.</p>
+          </article>
+          <article class="bg-white/5 border border-white/10 rounded-2xl p-6 h-full shadow-lg shadow-black/20">
+            <h3 class="text-lg font-semibold">Bühne & Technik</h3>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Einblicke in Licht, Ton, Kostüm und Maske – damit Kinder verstehen, wie ein Musical als Gesamtwerk entsteht.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Structure -->
+    <section class="py-16 md:py-20 bg-neutral-900 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+        <div class="space-y-6">
+          <h2 class="text-2xl md:text-3xl font-bold">Ablauf & Struktur</h2>
+          <p class="text-white/80 leading-relaxed">Die Musicalakademie läuft in Jahres- oder Halbjahresblöcken. Jede Phase endet mit einer Präsentation vor Publikum – ideal, um Fortschritte sichtbar zu machen.</p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+              <p class="text-sm uppercase tracking-wide text-amber-300">Wöchentliche Proben</p>
+              <p class="mt-2 text-white/80 text-sm leading-relaxed">90–120 Minuten in Holzwickede. Fokus auf Stimme, Bewegung und Text.</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+              <p class="text-sm uppercase tracking-wide text-amber-300">Workshops</p>
+              <p class="mt-2 text-white/80 text-sm leading-relaxed">Intensivtage zu Themen wie Bühnenkampf, Mikrofonarbeit oder Ausdruck.</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+              <p class="text-sm uppercase tracking-wide text-amber-300">Ensemblearbeit</p>
+              <p class="mt-2 text-white/80 text-sm leading-relaxed">Gemeinsamkeiten fördern: Chor, Szenenarbeit und kollektives Storytelling.</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+              <p class="text-sm uppercase tracking-wide text-amber-300">Auftritte</p>
+              <p class="mt-2 text-white/80 text-sm leading-relaxed">Mitwirkung an Vereinsproduktionen oder eigene Akademie-Showcases.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 shadow-xl shadow-black/30 space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-2 w-2 rounded-full bg-amber-400"></div>
+            <div>
+              <p class="text-sm uppercase tracking-wide text-amber-200">Altersgruppen</p>
+              <p class="text-white/80 leading-relaxed">Starter (6–9 Jahre), Juniors (10–13 Jahre) und Teens (14–17 Jahre). Wir gestalten Inhalte und Herausforderungen passend zur Gruppe.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-2 w-2 rounded-full bg-amber-400"></div>
+            <div>
+              <p class="text-sm uppercase tracking-wide text-amber-200">Teilnahme</p>
+              <p class="text-white/80 leading-relaxed">Die Akademie ist Teil des Vereinslebens. Mitgliedsbeitrag und Materialkosten bleiben transparent – Fördermöglichkeiten prüfen wir gern gemeinsam.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-2 w-2 rounded-full bg-amber-400"></div>
+            <div>
+              <p class="text-sm uppercase tracking-wide text-amber-200">Sicherheit</p>
+              <p class="text-white/80 leading-relaxed">Betreute Proben, klare Hausregeln und regelmäßige Feedbackrunden sorgen für ein wertschätzendes Miteinander.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-2 w-2 rounded-full bg-amber-400"></div>
+            <div>
+              <p class="text-sm uppercase tracking-wide text-amber-200">Kontakt & Anmeldung</p>
+              <p class="text-white/80 leading-relaxed">Schreib uns für freie Plätze oder ein Schnuppern unter <a class="underline hover:text-amber-300" href="mailto:info@vorhang-auf-holzwickede.de?subject=Musicalakademie%20Anfrage">info@vorhang-auf-holzwickede.de</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-16 md:py-20 bg-neutral-950">
+      <div class="max-w-7xl mx-auto px-6 md:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold">Ein Jahr Musicalakademie</h2>
+          <p class="mt-4 text-white/80 leading-relaxed">Von der ersten Probe bis zum Applaus: So begleiten wir unsere Kindermusical-Teams.</p>
+        </div>
+        <ol class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <li class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+            <p class="text-sm uppercase tracking-wide text-amber-300">Phase 1</p>
+            <p class="mt-2 font-semibold">Kick-off & Casting</p>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Kennenlernen, Stimmbildung, Bewegungs- und Impro-Übungen. Rollenverteilung gemeinsam erarbeiten.</p>
+          </li>
+          <li class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+            <p class="text-sm uppercase tracking-wide text-amber-300">Phase 2</p>
+            <p class="mt-2 font-semibold">Proben & Workshops</p>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Wöchentliche Proben mit Stimmtraining, Choreo-Building und Textarbeit. Plus: Spezial-Workshops.</p>
+          </li>
+          <li class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+            <p class="text-sm uppercase tracking-wide text-amber-300">Phase 3</p>
+            <p class="mt-2 font-semibold">Sitzproben & Technik</p>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Zusammenspiel mit Band oder Playbacks, Mikrofon-Handling, Kostüm- und Bühnenproben.</p>
+          </li>
+          <li class="bg-white/5 border border-white/10 rounded-2xl p-5 h-full">
+            <p class="text-sm uppercase tracking-wide text-amber-300">Phase 4</p>
+            <p class="mt-2 font-semibold">Aufführung & Reflexion</p>
+            <p class="mt-2 text-sm text-white/75 leading-relaxed">Shows vor Publikum, Feedbackrunden und gemeinsames Feiern der Erfolge.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 md:py-20 bg-gradient-to-br from-amber-500/15 via-neutral-900 to-neutral-950">
+      <div class="max-w-5xl mx-auto px-6 md:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold">Mitmachen beim Kindermusical</h2>
+        <p class="mt-4 text-white/80 leading-relaxed">Du kennst jemanden, der oder die auf die Bühne gehört? Wir freuen uns über neue Stimmen, neugierige Tänzer:innen und alle, die Bühnenluft schnuppern möchten.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" href="mailto:info@vorhang-auf-holzwickede.de?subject=Musicalakademie%20Schnupperprobe">Schnupperprobe anfragen</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" href="production_overview.html">Produktionen ansehen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-neutral-950 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="space-y-2 text-white/70 text-sm">
+        <div class="flex items-center gap-3">
+          <img src="https://vorhang-auf-holzwickede.de/assets/favicon.png" alt="Vorhang auf, Holzwickede! e.V." class="h-8 w-8" width="32" height="32" />
+          <div>
+            <p class="font-semibold text-white">Vorhang auf, Holzwickede! e.V.</p>
+            <p class="text-white/60 text-sm">Gemeinnütziger Musicalverein aus Holzwickede.</p>
+          </div>
+        </div>
+        <p>© <span id="year"></span> Vorhang auf, Holzwickede! e.V.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 text-sm text-white/70">
+        <a class="hover:text-white" href="about.html">Über uns</a>
+        <a class="hover:text-white" href="production_overview.html">Produktionen</a>
+        <a class="hover:text-white" href="support.html">Unterstützen</a>
+        <a class="hover:text-white" href="https://vorhang-auf-holzwickede.de/page/member">Mitglied werden</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.hasAttribute('hidden') === false;
+        mobileMenu.toggleAttribute('hidden');
+        menuBtn.setAttribute('aria-expanded', (!isOpen).toString());
+        menuBtn.textContent = isOpen ? 'Menü' : 'Schließen';
+      });
+    }
+
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>
