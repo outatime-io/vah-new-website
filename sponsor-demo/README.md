@@ -19,10 +19,10 @@ Diese Version enthält **4 verschiedene Sponsor-Banner-Optionen**:
 - Nachteil: Nimmt eine ganze Sektion ein
 
 ### 3. **Sidebar-Banner**
-- Position: Seitlich neben den Produktionen
-- Stil: Sticky Banner (bleibt beim Scrollen sichtbar)
-- Vorteil: Bleibt beim Scrollen sichtbar, stört Content nicht
-- Nachteil: Nur auf größeren Bildschirmen sichtbar
+- Position: Als dritte Kachel neben den Produktionen
+- Stil: Rotes Sparkasse-Banner mit gleicher Größe wie Produktionskacheln
+- Vorteil: Integriert sich nahtlos, wirkt nicht aufdringlich
+- Nachteil: Nimmt Platz einer Produktionskachel ein
 
 ### 4. **Footer-Anerkennung**
 - Position: Im Footer über dem Copyright
