@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mitglied werden – Vorhang auf, Holzwickede! e.V.</title>
+  <meta name="description" content="Werden Sie aktives Mitglied oder Fördermitglied von Vorhang auf, Holzwickede! e.V. und unterstützen Sie unsere Musicalarbeit nachhaltig." />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mitglied werden – Vorhang auf, Holzwickede! e.V." />
+  <meta property="og:description" content="Werden Sie Mitglied oder Fördermitglied und stärken Sie unsere Musicalproduktionen." />
+  <meta property="og:url" content="https://vorhang-auf-holzwickede.de/page/member" />
+  <meta property="og:image" content="https://vorhang-auf-holzwickede.de/assets/favicon.png" />
+
+  <link rel="icon" href="https://vorhang-auf-holzwickede.de/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://vorhang-auf-holzwickede.de" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --ring: 3px solid rgba(250,204,21,.55); --checkbox-size: 1.25rem; }
+    :focus-visible { outline: var(--ring); outline-offset: 2px }
+    .fancy-checkbox {
+      appearance: none;
+      display: inline-grid;
+      place-items: center;
+      height: var(--checkbox-size);
+      width: var(--checkbox-size);
+      border-radius: 0.5rem;
+      border: 1.8px solid rgba(255, 255, 255, 0.3);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 10px 24px rgba(0, 0, 0, 0.35);
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .fancy-checkbox::after {
+      content: "";
+      width: 0.55rem;
+      height: 0.3rem;
+      border-bottom: 2.4px solid #0f172a;
+      border-left: 2.4px solid #0f172a;
+      transform: rotate(-45deg) scale(0.6);
+      opacity: 0;
+      transition: transform 180ms ease, opacity 120ms ease;
+    }
+    .fancy-checkbox:hover { border-color: rgba(251,191,36,0.75); box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 12px 28px rgba(0,0,0,0.45); transform: translateY(-1px) scale(1.01); }
+    .fancy-checkbox:checked {
+      background: linear-gradient(135deg, #fbbf24, #fcd34d);
+      border-color: #fbbf24;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 12px 26px rgba(251,191,36,0.35);
+    }
+    .fancy-checkbox:checked::after { opacity: 1; transform: rotate(-45deg) scale(1); }
+    .fancy-checkbox:focus-visible { outline: var(--ring); outline-offset: 5px }
+    .checkbox-card { display: flex; align-items: center; gap: 0.85rem; padding: 1rem 1.1rem; border-radius: 1rem; border: 1.4px solid rgba(255,255,255,0.12); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 12px 38px rgba(0,0,0,0.28); transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease; }
+    .checkbox-card .fancy-checkbox { margin-top: 0; }
+    .checkbox-card:hover { border-color: rgba(251,191,36,0.65); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 16px 44px rgba(0,0,0,0.32); transform: translateY(-1px); }
+    .checkbox-card span { display: block; line-height: 1.7; }
+    .checkbox-card strong { color: white; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important }
+    }
+  </style>
+</head>
+<body class="antialiased text-white bg-neutral-950 min-h-screen flex flex-col">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed top-3 left-3 z-50 bg-amber-400 text-black rounded px-3 py-2">Zum Inhalt springen</a>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50">
+    <div class="bg-white/10 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Startseite">
+          <img src="https://vorhang-auf-holzwickede.de/assets/favicon.png" alt="Vorhang auf, Holzwickede! e.V. Logo" class="h-8 md:h-10 w-auto" width="40" height="40" />
+          <span class="sr-only">Vorhang auf, Holzwickede! e.V.</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8" aria-label="Hauptnavigation">
+          <a class="hover:underline" href="about.html">Über Uns</a>
+          <a class="hover:underline" href="musical-academy.html">Musical-Academy</a>
+          <a class="hover:underline" href="production_overview.html">Produktionen</a>
+          <a class="hover:underline" href="support.html">Unterstützen</a>
+          <a class="hover:underline" href="member.html" aria-current="page">Mitglied werden</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" href="https://4c28c4b7.sibforms.com/serve/MUIEAMUiOUAlOynvVUQ7c_rTIwca2N6hSbYO2SqXM4_TrpKBUcBMlsee8MPWbYik94uDBdrV3gsiyP_opBUhD90revfDXbZzw4Z97aoR2g5PXntT4a_KKaxWc1m_iW_2IGJPYiKlW56clloRHHHalL01qPXVQ3yTcppBIpKjJYjhcN7G_kZPSqCyI81CFhwmTnq1BRqCUNrURaUq" rel="noopener">Newsletter</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" href="https://pretix.eu/Vorhang-auf-Holzwickede/" rel="noopener">Ticketshop</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-white text-black border-white hover:opacity-90" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">Menü</button>
+      </div>
+    </div>
+    <nav id="mobileMenu" hidden class="md:hidden bg-white/10 backdrop-blur" aria-label="Mobile Navigation">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 py-3 grid gap-2">
+        <a class="py-2" href="about.html">Über Uns</a>
+        <a class="py-2" href="musical-academy.html">Musical-Academy</a>
+        <a class="py-2" href="production_overview.html">Produktionen</a>
+        <a class="py-2" href="support.html">Unterstützen</a>
+        <a class="py-2" href="member.html" aria-current="page">Mitglied werden</a>
+        <div class="flex gap-2 pt-2">
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10 flex-1" href="https://4c28c4b7.sibforms.com/serve/MUIEAMUiOUAlOynvVUQ7c_rTIwca2N6hSbYO2SqXM4_TrpKBUcBMlsee8MPWbYik94uDBdrV3gsiyP_opBUhD90revfDXbZzw4Z97aoR2g5PXntT4a_KKaxWc1m_iW_2IGJPYiKlW56clloRHHHalL01qPXVQ3yTcppBIpKjJYjhcN7G_kZPSqCyI81CFhwmTnq1BRqCUNrURaUq" rel="noopener">Newsletter</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300 flex-1" href="https://pretix.eu/Vorhang-auf-Holzwickede/" rel="noopener">Ticketshop</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="flex-1">
+    <section class="relative isolate overflow-hidden bg-gradient-to-b from-neutral-900/80 via-neutral-950 to-black">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-amber-500/20 to-transparent"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.06),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(248,250,252,0.07),transparent_30%)]"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pt-8 md:pt-14 pb-16 md:pb-24 text-center">
+        <p class="text-sm uppercase tracking-[0.25em] text-amber-300/90">Vorhang auf, Holzwickede! e.V.</p>
+        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">Mitglied oder Fördermitglied werden</h1>
+        <p class="mt-4 text-lg text-white/85 leading-relaxed max-w-3xl mx-auto">Schließen Sie sich unserer Musical-Community an. Mit Ihrer Mitgliedschaft stärken Sie unsere Produktionen und fördern Talente auf und hinter der Bühne.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" href="#formular">Zum Aufnahmeantrag</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" href="support.html">Weitere Unterstützungsmöglichkeiten</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-neutral-950" id="formular">
+      <div class="max-w-6xl mx-auto px-6 md:px-8">
+        <div class="max-w-3xl mb-10 space-y-3">
+          <h2 class="text-2xl md:text-3xl font-bold">Aufnahmeantrag</h2>
+          <p class="text-white/80 leading-relaxed">Beitrittserklärung und Einwilligung in die Datenverarbeitung im Zusammenhang mit dem Eintritt in den Verein Vorhang auf, Holzwickede! e.V. Felder mit <span class="text-amber-300">*</span> sind Pflichtfelder. Die Einwilligungen dienen der Erfüllung unserer Satzung und Datenschutzanforderungen.</p>
+          <p class="text-sm text-white/60">Der Antrag ist in vier Schritte unterteilt. Sie können jederzeit zurückspringen, ohne Ihre Eingaben zu verlieren. Die Angaben entsprechen dem gedruckten PDF-Antrag.</p>
+        </div>
+
+        <form id="membershipForm" class="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl shadow-black/30 space-y-10" action="#" method="post">
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="text-sm font-semibold text-white/70 uppercase tracking-[0.2em]">Formularschritte</span>
+              <div class="flex items-center gap-2" aria-hidden="true">
+                <span class="h-2.5 w-2.5 rounded-full bg-amber-400" data-step-dot="1"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-white/30" data-step-dot="2"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-white/30" data-step-dot="3"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-white/30" data-step-dot="4"></span>
+              </div>
+              <span class="text-sm text-white/70" id="stepLabel">Schritt 1 von 4 – Persönliche Daten</span>
+            </div>
+          </div>
+
+          <div class="space-y-12">
+            <section data-step="1" class="space-y-6">
+              <div class="space-y-2">
+                <p class="text-sm uppercase tracking-[0.2em] text-amber-300/80">Schritt 1 von 4</p>
+                <h3 class="text-xl md:text-2xl font-bold">Persönliche Daten</h3>
+                <p class="text-sm text-white/70 leading-relaxed">Hiermit beantrage ich die Mitgliedschaft im Verein Vorhang auf, Holzwickede! e.V., Josefstraße 33A, 59439 Holzwickede. Bitte geben Sie die Kontaktdaten vollständig an.</p>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2 md:col-span-2">
+                  <label class="block text-sm font-semibold" for="eintrittsdatum">Eintrittsdatum <span class="text-amber-300">*</span></label>
+                  <input id="eintrittsdatum" name="eintrittsdatum" type="date" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="vorname">Vorname <span class="text-amber-300">*</span></label>
+                  <input id="vorname" name="vorname" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Max" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="nachname">Nachname <span class="text-amber-300">*</span></label>
+                  <input id="nachname" name="nachname" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Mustermann" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="geburtsdatum">Geburtsdatum <span class="text-amber-300">*</span></label>
+                  <input id="geburtsdatum" name="geburtsdatum" type="date" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" />
+                </div>
+                <div class="space-y-2 md:col-span-2">
+                  <label class="block text-sm font-semibold" for="strasse">Straße, Hausnummer <span class="text-amber-300">*</span></label>
+                  <div class="grid md:grid-cols-[2fr,1fr] gap-3">
+                    <input id="strasse" name="strasse" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Beispielstraße" />
+                    <input id="hausnummer" name="hausnummer" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="12a" />
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="plz">PLZ <span class="text-amber-300">*</span></label>
+                  <input id="plz" name="plz" type="text" inputmode="numeric" pattern="[0-9]{5}" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="59439" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="ort">Ort <span class="text-amber-300">*</span></label>
+                  <input id="ort" name="ort" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Holzwickede" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="telefon">Telefon</label>
+                  <input id="telefon" name="telefon" type="tel" class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Festnetz" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="mobil">Mobil/Festnetz</label>
+                  <input id="mobil" name="mobil" type="tel" class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Mobilnummer" />
+                </div>
+                <div class="space-y-2 md:col-span-2">
+                  <label class="block text-sm font-semibold" for="email">E-Mail <span class="text-amber-300">*</span></label>
+                  <input id="email" name="email" type="email" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="mail@example.de" />
+                </div>
+                <div class="md:col-span-2 pt-2">
+                  <label class="checkbox-card text-sm text-white/80">
+                    <input type="checkbox" class="fancy-checkbox mt-1" />
+                    <span>Ich bin damit einverstanden, dass meine Kontaktdaten für vereinsbezogene, nicht kommerzielle Zwecke genutzt und dafür an andere Vereinsmitglieder weitergegeben werden (z. B. zwecks Bildung von Fahrgemeinschaften). Die Einwilligung ist freiwillig und kann jederzeit mit Wirkung für die Zukunft widerrufen werden.</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <section data-step="2" class="space-y-6 hidden">
+              <div class="space-y-2">
+                <p class="text-sm uppercase tracking-[0.2em] text-amber-300/80">Schritt 2 von 4</p>
+                <h3 class="text-xl md:text-2xl font-bold">Mitgliedschaft</h3>
+                <p class="text-sm text-white/70 leading-relaxed">Legen Sie Ihren jährlichen Beitrag fest und entscheiden Sie, ob Sie als Fördermitglied unterstützen möchten.</p>
+              </div>
+              <div class="space-y-4">
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="beitrag">Jahres Mitgliedsbeitrag (€) <span class="text-amber-300">*</span></label>
+                  <input id="beitrag" name="beitrag" type="number" min="0" step="0.01" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Mindestens laut Beitrags- und Gebührenordnung" />
+                  <p class="text-sm text-white/70 leading-relaxed">Ich zahle jährlich einen Mitgliedsbeitrag gemäß der gültigen Beitrags- und Gebührenordnung. Mein Jahresbeitrag beträgt mindestens den in der Beitragsordnung vorgesehenen Betrag (freiwillig höher möglich). Die Abbuchung des Beitrags erfolgt einmal jährlich gemäß § 4 Absatz 1 der Beitrags- und Gebührenordnung.</p>
+                </div>
+                <label class="checkbox-card text-sm text-white/80">
+                  <input type="checkbox" id="foerdermitglied" name="foerdermitglied" class="fancy-checkbox mt-1" />
+                  <span>Ich beantrage die Fördermitgliedschaft. Wird keine Auswahl getroffen, gilt der Antrag als Antrag auf ordentliche Mitgliedschaft (gemäß § 3 Absatz 3 der Satzung).</span>
+                </label>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-xs text-white/70 leading-relaxed">
+                  <p class="font-semibold text-white">Hinweis zu Fördermitgliedern</p>
+                  <p class="mt-2">Fördermitglieder unterstützen den Verein durch Beitragszahlungen, sind nicht verpflichtet, am aktiven Vereinsleben teilzunehmen, haben kein Stimmrecht in der Mitgliederversammlung und können nicht in den Vorstand gewählt werden. Eine spätere Umwandlung in eine ordentliche Mitgliedschaft ist jederzeit durch formlose Erklärung an den Vorstand möglich.</p>
+                  <p class="mt-2">Die aktuellen Mindestbeiträge entnehmen Sie der Beitrags- und Gebührenordnung des Vereins; für Fördermitglieder gilt ein reduzierter Mindestbeitrag laut Ordnung.</p>
+                </div>
+              </div>
+            </section>
+
+            <section data-step="3" class="space-y-6 hidden">
+              <div class="space-y-2">
+                <p class="text-sm uppercase tracking-[0.2em] text-amber-300/80">Schritt 3 von 4</p>
+                <h3 class="text-xl md:text-2xl font-bold">SEPA-Lastschriftmandat</h3>
+                <p class="text-sm text-white/70 leading-relaxed">Bitte hinterlegen Sie die Bankverbindung für den jährlichen Beitragseinzug. Gläubiger-Identifikationsnummer: [ID]. Die Mandatsreferenz wird Ihnen separat mitgeteilt.</p>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="kreditinstitut">Kreditinstitut <span class="text-amber-300">*</span></label>
+                  <input id="kreditinstitut" name="kreditinstitut" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Ihre Bank" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="kontoinhaber">Kontoinhaber*in <span class="text-amber-300">*</span></label>
+                  <input id="kontoinhaber" name="kontoinhaber" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60" placeholder="Name des Kontoinhabers" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="iban">IBAN <span class="text-amber-300">*</span></label>
+                  <input id="iban" name="iban" type="text" required class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60 font-mono" placeholder="DE00 0000 0000 0000 0000 00" />
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-semibold" for="bic">BIC</label>
+                  <input id="bic" name="bic" type="text" class="w-full rounded-xl bg-neutral-900 border border-white/10 px-4 py-3 text-white placeholder-white/50 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/60 font-mono" placeholder="WELADED1UNN" />
+                </div>
+                <div class="space-y-2 text-sm text-white/70 leading-relaxed md:col-span-2">
+                  <p>Die Abbuchung des Beitrags erfolgt einmal jährlich. Änderungen Ihrer Bankverbindung teilen Sie uns bitte rechtzeitig mit.</p>
+                  <p>Hinweis: Sie können innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrags verlangen. Es gelten die mit Ihrem Kreditinstitut vereinbarten Bedingungen.</p>
+                  <label class="checkbox-card text-sm text-white/80">
+                    <input type="checkbox" required class="fancy-checkbox mt-1" />
+                    <span>Ich erteile das SEPA-Lastschriftmandat und bestätige, dass ich über ausreichende Deckung des angegebenen Kontos verfüge. Ich ermächtige den Verein Vorhang auf, Holzwickede! e.V., Zahlungen von meinem Konto mittels Lastschrift einzuziehen, und weise mein Kreditinstitut an, die Lastschriften einzulösen.</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <section data-step="4" class="space-y-6 hidden">
+              <div class="space-y-2">
+                <p class="text-sm uppercase tracking-[0.2em] text-amber-300/80">Schritt 4 von 4</p>
+                <h3 class="text-xl md:text-2xl font-bold">Bestätigungen & Einwilligungen</h3>
+                <p class="text-sm text-white/70 leading-relaxed">Bitte lesen Sie die Hinweise und bestätigen Sie die Einwilligungen für Satzung und Datenschutz.</p>
+              </div>
+              <div class="space-y-4">
+                <label class="checkbox-card text-sm text-white/80">
+                  <input type="checkbox" required class="fancy-checkbox mt-1" />
+                  <span>Ich bestätige die Satzung und Ordnungen des Vereins in der jeweils gültigen Fassung. Die Satzung ist jederzeit auf unserer Website unter vorhang-auf-holzwickede.de einsehbar.</span>
+                </label>
+                <label class="checkbox-card text-sm text-white/80">
+                  <input type="checkbox" required class="fancy-checkbox mt-1" />
+                  <span>Die Informationspflichten gemäß Artikel 13 und 14 DSGVO habe ich gelesen und zur Kenntnis genommen (siehe Abschnitt „Informationspflichten“ weiter unten).</span>
+                </label>
+              </div>
+            </section>
+          </div>
+
+          <div class="flex flex-wrap gap-3 justify-between items-center">
+            <button type="reset" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10">Formular zurücksetzen</button>
+            <div class="flex flex-wrap gap-3">
+              <button type="button" id="prevStep" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" aria-label="Vorheriger Schritt">Zurück</button>
+              <button type="button" id="nextStep" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" aria-label="Nächster Schritt">Weiter</button>
+              <button type="submit" id="submitForm" class="hidden inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300">Antrag absenden</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-neutral-900">
+      <div class="max-w-6xl mx-auto px-6 md:px-8 grid lg:grid-cols-[1.2fr,1fr] gap-10 items-start">
+        <div class="space-y-4">
+          <h2 class="text-2xl md:text-3xl font-bold">Informationspflichten nach Art. 13 und 14 DSGVO</h2>
+          <div class="space-y-3 text-white/80 leading-relaxed">
+            <p><strong>Verantwortliche:</strong> Vorhang auf, Holzwickede! e.V. Josefstraße 33A, 59439 Holzwickede E-Mail: info@vorhang-auf-holzwickede.de</p>
+            <p><strong>Zwecke und Rechtsgrundlagen der Verarbeitung:</strong> Wir verarbeiten Ihre personenbezogenen Daten zur Begründung und Durchführung der Mitgliedschaft (Art. 6 Abs. 1 lit. b DSGVO), zur Erfüllung gesetzlicher Pflichten (Art. 6 Abs. 1 lit. c DSGVO) sowie auf Grundlage berechtigter Interessen des Vereins (Art. 6 Abs. 1 lit. f DSGVO). Daten, die Sie freiwillig angeben, verarbeiten wir auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Daten für das SEPA-Lastschriftmandat werden zur Beitragsabrechnung genutzt. Im Rahmen von Vereinsveranstaltungen können Foto- und Videoaufnahmen zum Zwecke der Öffentlichkeitsarbeit (z. B. Website, Social Media, Pressearbeit, Vereinschronik) erstellt und veröffentlicht werden. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. f DSGVO. Sofern Einzelaufnahmen erstellt werden oder der Fokus klar auf bestimmten Personen liegt, erfolgt eine vorherige ausdrückliche Einwilligung.</p>
+            <p><strong>Kategorien verarbeiteter Daten:</strong> • Stammdaten (Name, Anschrift, Geburtsdatum) • Kontaktdaten (Telefon, E-Mail) • Bankdaten für den Beitragseinzug • Vereinsbezogene Daten (Mitgliedsstatus, Beiträge, Funktionen)</p>
+            <p><strong>Datenquellen (Art. 14 DSGVO):</strong> Ihre Daten erhalten wir grundsätzlich direkt von Ihnen. Weitere personenbezogene Daten erheben wir nicht.</p>
+            <p><strong>Empfänger der Daten:</strong> Ihre Daten werden nur vereinsintern verarbeitet. Eine Weitergabe erfolgt ausschließlich, wenn dies zur Aufgabenerfüllung erforderlich ist (z. B. Banken für den Beitragseinzug) oder Sie ausdrücklich eingewilligt haben (z. B. Weitergabe von Kontaktdaten an Vereinsmitglieder).</p>
+            <p><strong>Übermittlung in Drittländer:</strong> Eine Übermittlung in Staaten außerhalb der EU findet nicht statt.</p>
+            <p><strong>Speicherdauer:</strong> Wir speichern Ihre Daten für die Dauer der Mitgliedschaft und darüber hinaus entsprechend gesetzlicher Aufbewahrungsfristen (z. B. steuerrechtlich bis zu 10 Jahre). Freiwillige Angaben löschen wir nach Widerruf Ihrer Einwilligung.</p>
+            <p><strong>Ihre Rechte:</strong> Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung. Erteilte Einwilligungen können jederzeit mit Wirkung für die Zukunft widerrufen werden.</p>
+            <p><strong>Beschwerderecht:</strong> Sie können sich bei der zuständigen Datenschutzaufsichtsbehörde beschweren: Landesbeauftragte für Datenschutz und Informationsfreiheit NRW, www.ldi.nrw.de.</p>
+            <p><strong>Pflicht zur Bereitstellung der Daten:</strong> Die für die Mitgliedschaft erforderlichen Daten sind bereitzustellen. Ohne diese ist ein Vereinsbeitritt nicht möglich. Freiwillige Angaben müssen nicht gemacht werden.</p>
+          </div>
+        </div>
+        <aside class="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4 shadow-lg shadow-black/20">
+          <h3 class="text-xl font-bold">Kontakt & Rückfragen</h3>
+          <p class="text-white/80 leading-relaxed">Sie haben Fragen zum Antrag oder benötigen Unterstützung? Schreiben Sie uns – wir helfen gerne weiter.</p>
+          <div class="space-y-2 text-sm text-white/75">
+            <a class="underline" href="mailto:info@vorhang-auf-holzwickede.de">info@vorhang-auf-holzwickede.de</a>
+            <div>Vorhang auf, Holzwickede! e.V.<br>Josefstraße 33A<br>59439 Holzwickede</div>
+          </div>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300 w-full" href="mailto:info@vorhang-auf-holzwickede.de?subject=Mitgliedsantrag">E-Mail senden</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-gradient-to-b from-neutral-900 via-neutral-950 to-black">
+      <div class="max-w-5xl mx-auto px-6 md:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold">Bereit für die Bühne?</h2>
+        <p class="mt-4 text-white/80 leading-relaxed">Ob aktiv im Ensemble oder als Fördermitglied: Gemeinsam bringen wir Musicals in Holzwickede auf die Bühne.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" href="#formular">Antrag ausfüllen</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold tracking-wide shadow-lg border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" href="support.html">Mehr Möglichkeiten entdecken</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-neutral-900 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-12">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <img src="https://vorhang-auf-holzwickede.de/assets/favicon.png" alt="Vorhang auf, Holzwickede! e.V. Logo" class="h-12 w-auto" />
+          <p class="mt-4 text-white/70 text-sm leading-relaxed">Schauspiel, Tanz und Gesang – wir bringen Musicals auf die Bühne in Holzwickede und Umgebung.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">Kontakt</h3>
+          <ul class="mt-3 space-y-2 text-sm text-white/80">
+            <li><a class="underline" href="mailto:info@vorhang-auf-holzwickede.de">info@vorhang-auf-holzwickede.de</a></li>
+            <li><a class="underline" href="https://www.facebook.com/VorhangAufHolzwickede/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a class="underline" href="https://www.instagram.com/vorhang_auf_holzwickede_e.v/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">Rechtliches</h3>
+          <ul class="mt-3 space-y-2 text-sm text-white/80">
+            <li><a class="underline" href="https://vorhang-auf-holzwickede.de/page/impressum">Impressum</a></li>
+            <li><a class="underline" href="https://vorhang-auf-holzwickede.de/page/datenschutz">Datenschutz</a></li>
+            <li><a class="underline" href="https://vorhang-auf-holzwickede.de/page/downloads">Downloads</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-4 text-xs text-white/60">© 2025 Vorhang Auf, Holzwickede! e.V.</div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (menu) {
+        if (menu.hasAttribute('hidden')) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
+      }
+    });
+
+    const form = document.getElementById('membershipForm');
+    const steps = Array.from(form?.querySelectorAll('[data-step]') ?? []);
+    const dots = Array.from(form?.querySelectorAll('[data-step-dot]') ?? []);
+    const nextBtn = document.getElementById('nextStep');
+    const prevBtn = document.getElementById('prevStep');
+    const submitBtn = document.getElementById('submitForm');
+    const stepLabel = document.getElementById('stepLabel');
+    const labels = [
+      'Schritt 1 von 4 – Persönliche Daten',
+      'Schritt 2 von 4 – Mitgliedschaft',
+      'Schritt 3 von 4 – SEPA-Lastschriftmandat',
+      'Schritt 4 von 4 – Bestätigungen'
+    ];
+    let currentStep = 0;
+
+    function showStep(index) {
+      steps.forEach((step, idx) => {
+        const isActive = idx === index;
+        step.classList.toggle('hidden', !isActive);
+        step.toggleAttribute('hidden', !isActive);
+      });
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('bg-amber-400', idx === index);
+        dot.classList.toggle('bg-white/30', idx !== index);
+      });
+      if (stepLabel) stepLabel.textContent = labels[index] ?? '';
+      if (prevBtn) prevBtn.disabled = index === 0;
+      if (nextBtn) nextBtn.classList.toggle('hidden', index === steps.length - 1);
+      if (submitBtn) submitBtn.classList.toggle('hidden', index !== steps.length - 1);
+    }
+
+    function validateStep(index) {
+      const step = steps[index];
+      if (!step) return false;
+      const inputs = Array.from(step.querySelectorAll('input, select, textarea'));
+      return inputs.every((input) => input.reportValidity());
+    }
+
+    nextBtn?.addEventListener('click', () => {
+      if (!validateStep(currentStep)) return;
+      if (currentStep < steps.length - 1) {
+        currentStep += 1;
+        showStep(currentStep);
+      }
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep -= 1;
+        showStep(currentStep);
+      }
+    });
+
+    form?.addEventListener('submit', (event) => {
+      if (!validateStep(currentStep)) {
+        event.preventDefault();
+        return;
+      }
+    });
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
