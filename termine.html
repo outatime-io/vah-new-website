@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Termine – Vorhang auf, Holzwickede! e.V.</title>
+  <meta name="description" content="Alle kommenden Termine von Vorhang auf, Holzwickede! e.V. – von Produktionen bis zu offenen Vereinsabenden." />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Termine – Vorhang auf, Holzwickede! e.V." />
+  <meta property="og:description" content="Konzerte, Auftritte und Vereinsabende auf einen Blick." />
+  <meta property="og:url" content="https://vorhang-auf-holzwickede.de/page/termine" />
+  <meta property="og:image" content="https://vorhang-auf-holzwickede.de/assets/favicon.png" />
+  <link rel="icon" href="https://vorhang-auf-holzwickede.de/assets/favicon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --ring: 3px solid rgba(250,204,21,.55) }
+    :focus-visible { outline: var(--ring); outline-offset: 2px }
+    .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden }
+    .timeline-wrapper { position: relative; padding-left: 1.5rem }
+    .event-card { position: relative; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding: 1.25rem 1.35rem; isolation: isolate; min-height: 230px; display: grid; grid-template-columns: auto 1fr; gap: 1.25rem }
+    .event-card::after { content: ""; position: absolute; inset: 0; border-radius: 18px; background: linear-gradient(90deg, rgba(250,204,21,0.03), transparent 45%); pointer-events: none; z-index: 0 }
+    .event-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); transition: transform 160ms ease, border-color 160ms ease }
+    .event-date { position: relative; z-index: 2; min-width: 120px; padding: 0.35rem 0.25rem; background: transparent; border: none; box-shadow: none }
+    .event-meta { position: relative; z-index: 2; border: none }
+    .action-button { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 12px; padding: 0.6rem 1rem; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.01em; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: #fefefe; transition: all 150ms ease }
+    .action-button:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px) }
+    .action-button--primary { background: linear-gradient(90deg, #facc15, #f97316); color: #0f0f0f; border-color: #facc15; box-shadow: 0 6px 18px rgba(249,115,22,0.25) }
+    .action-button--primary:hover { background: linear-gradient(90deg, #fbbf24, #fb923c) }
+    .chip { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.35rem; border-radius: 9999px; padding: 0.45rem 0.8rem; font-weight: 600; font-size: 0.9rem; background: transparent; border: 1px solid rgba(255,255,255,0.12) }
+    .pill { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.35rem; border-radius: 9999px; padding: 0.4rem 0.85rem; font-weight: 600; font-size: 0.85rem; background: transparent; border: 1px solid rgba(255,255,255,0.16); color: #fefefe }
+    .timeline-dot { position: absolute; left: -1.05rem; top: 1.25rem; width: 12px; height: 12px; border-radius: 9999px; background: #facc15; border: 3px solid #0f0f0f; box-shadow: 0 0 0 2px rgba(255,255,255,0.05) }
+    @media (min-width: 768px) { .event-card { padding: 1.5rem 1.65rem; gap: 1.5rem } .timeline-dot { left: -0.95rem } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important }
+    }
+  </style>
+</head>
+<body class="antialiased text-white bg-neutral-950 min-h-screen flex flex-col">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed top-3 left-3 z-50 bg-amber-400 text-black rounded px-3 py-2">Zum Inhalt springen</a>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50">
+    <div class="bg-white/10 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Startseite">
+          <img src="https://vorhang-auf-holzwickede.de/assets/favicon.png" alt="Vorhang auf, Holzwickede! e.V. Logo" class="h-8 md:h-10 w-auto" />
+          <span class="sr-only">Vorhang auf, Holzwickede! e.V.</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8" aria-label="Hauptnavigation">
+          <a class="hover:underline" href="about.html">Über Uns</a>
+          <a class="hover:underline" href="termine.html" aria-current="page">Termine</a>
+          <a class="hover:underline" href="musical-academy.html">Musical-Academy</a>
+          <a class="hover:underline" href="production_overview.html">Produktionen</a>
+          <a class="hover:underline" href="support.html">Unterstützen</a>
+          <a class="hover:underline" href="member.html">Mitglied werden</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10" href="https://4c28c4b7.sibforms.com/serve/MUIEAMUiOUAlOynvVUQ7c_rTIwca2N6hSbYO2SqXM4_TrpKBUcBMlsee8MPWbYik94uDBdrV3gsiyP_opBUhD90revfDXbZzw4Z97aoR2g5PXntT4a_KKaxWc1m_iW_2IGJPYiKlW56clloRHHHalL01qPXVQ3yTcppBIpKjJYjhcN7G_kZPSqCyI81CFhwmTnq1BRqCUNrURaUq" rel="noopener noreferrer">Newsletter</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300" href="https://pretix.eu/Vorhang-auf-Holzwickede/" rel="noopener noreferrer">Ticketshop</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-white text-black border-white hover:opacity-90" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">Menü</button>
+      </div>
+    </div>
+    <nav id="mobileMenu" hidden class="md:hidden bg-white/10 backdrop-blur" aria-label="Mobile Navigation">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 py-3 grid gap-2">
+        <a class="py-2" href="about.html">Über Uns</a>
+        <a class="py-2" href="termine.html" aria-current="page">Termine</a>
+        <a class="py-2" href="musical-academy.html">Musical-Academy</a>
+        <a class="py-2" href="production_overview.html">Produktionen</a>
+        <a class="py-2" href="support.html">Unterstützen</a>
+        <a class="py-2" href="member.html">Mitglied werden</a>
+        <div class="flex gap-2 pt-2">
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-transparent text-white/90 border-white/20 hover:bg-white/10 flex-1" href="https://4c28c4b7.sibforms.com/serve/MUIEAMUiOUAlOynvVUQ7c_rTIwca2N6hSbYO2SqXM4_TrpKBUcBMlsee8MPWbYik94uDBdrV3gsiyP_opBUhD90revfDXbZzw4Z97aoR2g5PXntT4a_KKaxWc1m_iW_2IGJPYiKlW56clloRHHHalL01qPXVQ3yTcppBIpKjJYjhcN7G_kZPSqCyI81CFhwmTnq1BRqCUNrURaUq" rel="noopener noreferrer">Newsletter</a>
+          <a class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold tracking-wide shadow-sm border transition bg-amber-400 text-black border-amber-400 hover:bg-amber-300 flex-1" href="https://pretix.eu/Vorhang-auf-Holzwickede/" rel="noopener noreferrer">Ticketshop</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="flex-1">
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden bg-gradient-to-b from-neutral-900/70 via-neutral-950 to-black">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-amber-500/25 to-transparent"></div>
+        <div class="absolute -left-40 top-10 h-64 w-64 rounded-full bg-amber-500/10 blur-3xl"></div>
+        <div class="absolute right-10 bottom-0 h-48 w-48 rounded-full bg-amber-300/10 blur-3xl"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pt-6 md:pt-8 pb-12 md:pb-14">
+        <nav class="text-sm text-white/70" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2">
+            <li><a class="underline" href="index.html">Startseite</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a class="underline text-white" href="termine.html" aria-current="page">Termine</a></li>
+          </ol>
+        </nav>
+        <h1 class="mt-8 text-3xl md:text-5xl font-extrabold tracking-tight">Nächste Termine &amp; Auftritte</h1>
+        <p class="mt-4 text-white/80 max-w-3xl leading-relaxed">Hier findest du unsere kommenden Produktionen und offenen Vereins-Termine – inklusive Infos, ob Tickets nötig sind, ob der Eintritt frei ist oder ob du einfach vorbeikommen kannst.</p>
+      </div>
+    </section>
+
+    <!-- Terminliste -->
+    <section class="pt-10 md:pt-12 pb-16 bg-gradient-to-b from-neutral-950 via-neutral-950 to-black">
+      <div class="max-w-7xl mx-auto px-6 md:px-8 space-y-8">
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-3 max-w-3xl">
+            <p class="text-sm uppercase tracking-[0.2em] text-amber-200">Programm</p>
+            <h2 class="text-2xl md:text-3xl font-bold">Termine</h2>
+            <p class="text-white/80 leading-relaxed">Ob großes Musical, lockerer Vereinsabend oder Auftritt auf dem Weihnachtsmarkt – hier findest du die nächsten Möglichkeiten, uns zu erleben. Alle Karten sind nach Datum sortiert.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3" aria-label="Termin-Ansicht auswählen">
+            <p class="text-sm text-white/70">Anzeige:</p>
+            <div class="inline-flex rounded-2xl border border-white/10 bg-white/5 p-1 shadow-inner shadow-black/30" role="group" aria-label="Filter für Termine">
+              <button type="button" data-filter="upcoming" class="rounded-xl px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 bg-white text-black shadow">Nur kommende</button>
+              <button type="button" data-filter="all" class="rounded-xl px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 text-white/80 hover:bg-white/10">Alle (inkl. vergangene)</button>
+            </div>
+          </div>
+        </div>
+        <div id="eventList" class="timeline-wrapper grid gap-6" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-neutral-900 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-12">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <img src="https://vorhang-auf-holzwickede.de/assets/favicon.png" alt="Vorhang auf, Holzwickede! e.V. Logo" class="h-12 w-auto" />
+          <p class="mt-4 text-white/70 text-sm leading-relaxed">Schauspiel, Tanz und Gesang – wir bringen Musicals auf die Bühne in Holzwickede und Umgebung.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">Kontakt</h3>
+          <ul class="mt-3 space-y-2 text-sm text-white/80">
+            <li><a class="underline" href="mailto:info@vorhang-auf-holzwickede.de">info@vorhang-auf-holzwickede.de</a></li>
+            <li><a class="underline" href="https://www.facebook.com/VorhangAufHolzwickede/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a class="underline" href="https://www.instagram.com/vorhang_auf_holzwickede_e.v/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">Rechtliches</h3>
+          <ul class="mt-3 space-y-2 text-sm text-white/80">
+            <li><a class="underline" href="https://vorhang-auf-holzwickede.de/page/impressum">Impressum</a></li>
+            <li><a class="underline" href="https://vorhang-auf-holzwickede.de/page/datenschutz">Datenschutz</a></li>
+            <li><a class="underline" href="https://vorhang-auf-holzwickede.de/page/downloads">Downloads</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 text-xs text-white/60">
+        <span class="uppercase tracking-wider text-white/60">Versionen:</span>
+        <a class="underline hover:text-white" href="production_overview.html">Standard</a>
+        <span aria-hidden="true"> · </span>
+        <a class="underline hover:text-white" href="sponsor-demo/production_overview.html">Sponsoren‑Demo</a>
+      </div>
+      <div class="mt-4 text-xs text-white/60">© 2025 Vorhang Auf, Holzwickede! e.V.</div>
+    </div>
+  </footer>
+
+  <template id="eventCardTemplate">
+    <article class="event-card">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="relative event-date flex flex-col items-center justify-center gap-1 text-center">
+        <p class="text-sm font-semibold text-amber-200" data-weekday>Sa</p>
+        <p class="text-3xl font-black leading-none" data-day>08</p>
+        <p class="text-xs text-white/70" data-month>Feb 2025</p>
+      </div>
+      <div class="flex flex-col gap-4 h-full">
+        <div class="event-meta px-1 flex flex-wrap items-center gap-3 text-sm text-white/80">
+          <span class="pill" data-badge>Termin</span>
+          <p class="text-xs uppercase tracking-[0.14em] text-white/60" data-date></p>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-xl md:text-2xl font-semibold leading-tight" data-title></h3>
+          <p class="text-sm text-white/80 leading-relaxed line-clamp-3" data-description></p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-sm text-white/80">
+          <span class="chip" data-location></span>
+          <span class="chip" data-attendance hidden></span>
+        </div>
+        <div class="pt-1 flex flex-wrap gap-3 mt-auto" data-actions></div>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    const normalizeTermineLinks = () => {
+      const containers = document.querySelectorAll('[aria-label="Hauptnavigation"], #mobileMenu');
+      containers.forEach(container => {
+        const termineLinks = Array.from(container.querySelectorAll('a[href$="termine.html"]'));
+        if (!termineLinks.length) return;
+
+        const primary = termineLinks[0];
+        termineLinks.slice(1).forEach(link => link.remove());
+
+        const aboutLink = container.querySelector('a[href$="about.html"]');
+        if (aboutLink && aboutLink.nextElementSibling !== primary) {
+          aboutLink.insertAdjacentElement('afterend', primary);
+        }
+      });
+    };
+
+    normalizeTermineLinks();
+
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (menu) {
+        if (menu.hasAttribute('hidden')) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
+      }
+    });
+
+    const EVENTS = [
+      {
+        title: 'Gastspiel – John & Jen',
+        type: 'Produktion',
+        date: '2026-02-14',
+        location: 'Forum Holzwickede',
+        description: 'Ein intimes Zwei-Personen-Musical von Andrew Lippa & Tom Greenwald.',
+        detailUrl: 'production_detail.html',
+        ticketUrl: 'https://pretix.eu/Vorhang-auf-Holzwickede/',
+        attendance: 'Tickets online erhältlich.'
+      },
+      {
+        title: 'Der kleine Tag',
+        type: 'Produktion',
+        date: '2026-03-21',
+        location: 'Forum Holzwickede',
+        description: 'Familienmusical über einen besonderen Tag voller kleiner Wunder.',
+        detailUrl: 'production_detail_kleiner_tag.html',
+        ticketUrl: 'https://pretix.eu/Vorhang-auf-Holzwickede/',
+        attendance: 'Tickets online erhältlich.'
+      },
+      {
+        title: 'Offenes Probetraining – Musical-Academy',
+        type: 'Offenes Event',
+        date: '2026-01-24',
+        location: 'Forum Holzwickede, Probenraum 2',
+        description: 'Ein Nachmittag zum Reinschnuppern: Warm-ups, Choreo-Snippets und Q&A mit dem Team.',
+        attendance: 'Kostenfrei – meld dich am Eingang, bequeme Kleidung reicht.'
+      },
+      {
+        title: 'Matinee – Songs aus kommenden Produktionen',
+        type: 'Konzertabend',
+        date: '2026-04-19',
+        location: 'Kulturzentrum Schöne Flöte, Unna',
+        description: 'Akustische Einblicke in neue Shows mit kleiner Besetzung und Moderation.',
+        attendance: 'Tickets online erhältlich.',
+        ticketUrl: 'https://pretix.eu/Vorhang-auf-Holzwickede/'
+      },
+      {
+        title: 'Tanzabend',
+        type: 'Offenes Event',
+        date: '2026-06-06',
+        location: 'Begegnungszentrum Holzwickede',
+        description: 'Ein entspannter Abend mit Mitmach-Workshops, Social Dance und Getränken.',
+        attendance: 'Eintritt frei – komm einfach vorbei.'
+      },
+      {
+        title: 'Auftritt auf dem Weihnachtsmarkt',
+        type: 'Auftritt',
+        date: '2024-12-01',
+        location: 'Weihnachtsmarkt Holzwickede (Bühne am Marktplatz)',
+        description: 'Musikalische Ausschnitte aus unseren Shows im weihnachtlichen Ambiente.',
+        attendance: 'Open-Air-Auftritt, kostenfrei – komm einfach vorbei und genieße die Musik.'
+      },
+      {
+        title: 'Musicalliebe 2.0',
+        type: 'Konzertabend',
+        date: '2026-05-10',
+        location: 'Forum Holzwickede',
+        description: 'Ein Gala-Abend mit den schönsten Musical-Songs in neuer Besetzung.',
+        attendance: 'Tickets im Vorverkauf erhältlich.',
+        ticketUrl: 'https://pretix.eu/Vorhang-auf-Holzwickede/'
+      },
+      {
+        title: 'Musicalliebe 3.0',
+        type: 'Konzertabend',
+        date: '2026-11-14',
+        location: 'Forum Holzwickede',
+        description: 'Die nächste Ausgabe unserer beliebten Konzertreihe mit Liveband.',
+        attendance: 'Eintritt 8 € – zahlbar an der Abendkasse. Frühes Erscheinen sichert die besten Plätze.'
+      }
+    ];
+
+    const eventList = document.getElementById('eventList');
+    const cardTemplate = document.getElementById('eventCardTemplate');
+
+    const formatDate = (dateString) => {
+      const date = new Date(dateString + 'T12:00:00');
+      return new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: 'long', year: 'numeric' }).format(date);
+    };
+
+    const formatDateParts = (dateString) => {
+      const date = new Date(dateString + 'T12:00:00');
+      const formatter = new Intl.DateTimeFormat('de-DE', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+      const parts = formatter.formatToParts(date).reduce((acc, part) => {
+        if (part.type !== 'literal') acc[part.type] = part.value;
+        return acc;
+      }, {});
+      return {
+        weekday: parts.weekday?.replace('.', ''),
+        day: parts.day,
+        monthYear: `${parts.month} ${parts.year}`
+      };
+    };
+
+    const createIcon = (name) => {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('stroke-width', '1.8');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.classList.add('w-4', 'h-4', 'opacity-80');
+
+      if (name === 'location') {
+        const pin = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        pin.setAttribute('stroke-linecap', 'round');
+        pin.setAttribute('stroke-linejoin', 'round');
+        pin.setAttribute('d', 'M12 21s-6-7-6-10.5A6 6 0 1118 10.5C18 14 12 21 12 21z');
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', '12');
+        dot.setAttribute('cy', '10.5');
+        dot.setAttribute('r', '2.25');
+        svg.append(pin, dot);
+      }
+
+      if (name === 'ticket') {
+        const body = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        body.setAttribute('stroke-linecap', 'round');
+        body.setAttribute('stroke-linejoin', 'round');
+        body.setAttribute('d', 'M5 8a2 2 0 012-2h10a1 1 0 011 1v1a2.5 2.5 0 010 4v1a1 1 0 01-1 1H7a2 2 0 01-2-2v-1a2.5 2.5 0 010-4V7z');
+        const perforation = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        perforation.setAttribute('stroke-linecap', 'round');
+        perforation.setAttribute('stroke-linejoin', 'round');
+        perforation.setAttribute('stroke-dasharray', '2 2');
+        perforation.setAttribute('d', 'M12 7v10');
+        svg.append(body, perforation);
+      }
+
+      return svg;
+    };
+
+    const createActionButton = (label, href, options = {}) => {
+      const link = document.createElement('a');
+      link.className = 'action-button';
+      if (options.variant === 'primary') link.classList.add('action-button--primary');
+      link.textContent = label;
+      link.href = href;
+      if (options.targetBlank) link.setAttribute('target', '_blank');
+      if (options.rel) link.setAttribute('rel', options.rel);
+      return link;
+    };
+
+    const filterButtons = document.querySelectorAll('[data-filter]');
+
+    const renderEvents = (mode = 'upcoming') => {
+      if (!eventList) return;
+      eventList.innerHTML = '';
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const sorted = [...EVENTS]
+        .sort((a, b) => new Date(a.date) - new Date(b.date))
+        .filter((event) => mode === 'all' || new Date(event.date) >= today);
+
+      if (!sorted.length) {
+        const empty = document.createElement('p');
+        empty.className = 'text-white/70';
+        empty.textContent = 'Aktuell sind keine Termine in diesem Zeitraum vorhanden.';
+        eventList.appendChild(empty);
+        return;
+      }
+
+      sorted.forEach((event) => {
+        const fragment = cardTemplate.content.cloneNode(true);
+        const badge = fragment.querySelector('[data-badge]');
+        const dateEl = fragment.querySelector('[data-date]');
+        const titleEl = fragment.querySelector('[data-title]');
+        const descriptionEl = fragment.querySelector('[data-description]');
+        const locationEl = fragment.querySelector('[data-location]');
+        const attendanceEl = fragment.querySelector('[data-attendance]');
+        const weekdayEl = fragment.querySelector('[data-weekday]');
+        const dayEl = fragment.querySelector('[data-day]');
+        const monthEl = fragment.querySelector('[data-month]');
+        const actions = fragment.querySelector('[data-actions]');
+
+        badge.textContent = event.type || 'Event';
+        if (event.type === 'Produktion') {
+          badge.className = 'pill text-emerald-100 border-emerald-200/40';
+        } else {
+          badge.className = 'pill text-amber-100 border-amber-200/40';
+        }
+
+        const dateParts = formatDateParts(event.date);
+        dateEl.textContent = formatDate(event.date);
+        weekdayEl.textContent = dateParts.weekday || '';
+        dayEl.textContent = dateParts.day || '';
+        monthEl.textContent = dateParts.monthYear || '';
+        titleEl.textContent = event.title;
+        descriptionEl.textContent = event.description;
+        locationEl.appendChild(createIcon('location'));
+        locationEl.appendChild(document.createTextNode(event.location));
+
+        if (event.attendance) {
+          attendanceEl.appendChild(createIcon('ticket'));
+          attendanceEl.appendChild(document.createTextNode(event.attendance));
+          attendanceEl.hidden = false;
+        }
+
+        actions.innerHTML = '';
+        if (event.detailUrl) {
+          actions.appendChild(createActionButton('Details', event.detailUrl));
+        }
+        if (event.ticketUrl) {
+          actions.appendChild(createActionButton('Ticketshop', event.ticketUrl, { variant: 'primary', targetBlank: true, rel: 'noopener noreferrer' }));
+        }
+        if (event.mailto) {
+          actions.appendChild(createActionButton('Platz reservieren', event.mailto));
+        }
+
+        eventList?.appendChild(fragment);
+      });
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const mode = button.dataset.filter || 'upcoming';
+        filterButtons.forEach((btn) => {
+          btn.classList.remove('bg-white', 'text-black', 'shadow');
+          btn.classList.add('text-white/80');
+          btn.classList.toggle('hover:bg-white/10', btn.dataset.filter !== mode);
+        });
+        button.classList.add('bg-white', 'text-black', 'shadow');
+        button.classList.remove('text-white/80');
+        button.classList.remove('hover:bg-white/10');
+        renderEvents(mode);
+      });
+    });
+
+    renderEvents('upcoming');
+  </script>
+</body>
+</html>

@@ -40,6 +40,7 @@
         </a>
         <nav class="hidden md:flex items-center gap-8" aria-label="Hauptnavigation">
           <a class="hover:underline" href="about.html">Über Uns</a>
+          <a class="hover:underline" href="../termine.html">Termine</a>
           <a class="hover:underline" href="musical-academy.html">Musical-Academy</a>
           <a class="hover:underline" href="production_overview.html">Produktionen</a>
           <a class="hover:underline" href="support.html" aria-current="page">Unterstützen</a>
@@ -53,6 +54,7 @@
     <nav id="mobileMenu" hidden class="md:hidden bg-white/10 backdrop-blur" aria-label="Mobile Navigation">
       <div class="max-w-7xl mx-auto px-6 md:px-8 py-3 grid gap-2">
         <a class="py-2" href="about.html">Über Uns</a>
+        <a class="py-2" href="../termine.html">Termine</a>
         <a class="py-2" href="musical-academy.html">Musical-Academy</a>
         <a class="py-2" href="production_overview.html">Produktionen</a>
         <a class="py-2" href="support.html" aria-current="page">Unterstützen</a>
@@ -396,6 +398,24 @@
   </footer>
 
   <script>
+    const normalizeTermineLinks = () => {
+      const containers = document.querySelectorAll('[aria-label="Hauptnavigation"], #mobileMenu');
+      containers.forEach(container => {
+        const termineLinks = Array.from(container.querySelectorAll('a[href$="termine.html"]'));
+        if (!termineLinks.length) return;
+
+        const primary = termineLinks[0];
+        termineLinks.slice(1).forEach(link => link.remove());
+
+        const aboutLink = container.querySelector('a[href$="about.html"]');
+        if (aboutLink && aboutLink.nextElementSibling !== primary) {
+          aboutLink.insertAdjacentElement('afterend', primary);
+        }
+      });
+    };
+
+    normalizeTermineLinks();
+
     const btn = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
     btn?.addEventListener('click', () => {
