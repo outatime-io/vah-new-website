@@ -417,11 +417,11 @@
           <div class="flex flex-wrap gap-3 text-xs">
             <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2">
               <div class="w-3 h-3 rounded-full bg-amber-400/50 border border-amber-400"></div>
-              <span class="text-white/80">🎭 Forum</span>
+              <span class="text-white/80">Forum</span>
             </div>
             <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2">
               <div class="w-3 h-3 rounded-full bg-green-400/50 border border-green-400"></div>
-              <span class="text-white/80">📚 Grundschule</span>
+              <span class="text-white/80">Grundschule</span>
             </div>
           </div>
         </div>
@@ -515,8 +515,7 @@
 
           const timeText = e.time ? e.time + ' · ' : '';
           const titleText = e.title || 'Termin';
-          const venueIcon = isGrundschule ? '📚 ' : '🎭 ';
-          const venueText = e.venue ? `\n${venueIcon}${e.venue}` : '';
+          const venueText = e.venue ? `\n${e.venue}` : '';
 
           a.innerHTML = `<div class="font-medium">${timeText}${titleText}</div>${venueText ? `<div class="text-[10px] mt-0.5 opacity-80">${venueText}</div>` : ''}`;
           return a;
